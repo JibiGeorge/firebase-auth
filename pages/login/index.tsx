@@ -7,7 +7,7 @@ import GitHubIcon from '@mui/icons-material/GitHub';
 import PhoneIcon from '@mui/icons-material/Phone';
 import bg1 from '/public/images/background/bg1.jpg'
 import { useAuthState } from 'react-firebase-hooks/auth';
-import { auth, signInWithGoogle } from '@/firebase';
+import { auth, signInWithGithub, signInWithGoogle } from '@/firebase';
 import { useRouter } from 'next/router';
 import { useDispatch } from 'react-redux';
 import { setLoggedUserData } from '@/redux/slice/userSlice';
@@ -34,7 +34,7 @@ const index = () => {
         </div>
         <div className="flex flex-col w-full gap-3">
           <Button title="Continue With Google" txtColor="#FFF" bg="#EF4444" Icon={GoogleIcon} handleOnClick={signInWithGoogle}/>
-          <Button title="Continue With Github" txtColor="#FFF" bg="#000" Icon={GitHubIcon} />
+          <Button title="Continue With Github" txtColor="#FFF" bg="#000" Icon={GitHubIcon} handleOnClick={signInWithGithub} />
           <Button title="Continue With Phone" txtColor="#FFF" bg="#0a6cc8" Icon={PhoneIcon} />
         </div>
         <hr className="h-[2px] bg-[#777676b8]" />

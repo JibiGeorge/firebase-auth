@@ -1,6 +1,7 @@
 import { initializeApp } from "firebase/app";
 import {
   AuthProvider,
+  GithubAuthProvider,
   GoogleAuthProvider,
   getAuth,
   signInWithPopup,
@@ -20,18 +21,24 @@ const app = initializeApp(firebaseConfig);
 const auth = getAuth(app);
 
 const googleProvider = new GoogleAuthProvider();
+const githubProvider = new GithubAuthProvider();
 
 const signInWithGoogle = async () => {
   await signInWithFireBase(googleProvider);
 };
 
+const signInWithGithub = async () => {
+  await signInWithFireBase(githubProvider);
+};
+
 const signInWithFireBase = async (authProvider: AuthProvider) => {
-  try {
-    const res = await signInWithPopup(auth, authProvider);
-    return res?.user;
-  } catch (err) {
-    console.error(err);
-  }
+    await signInWithPopup(auth, authProvider).then((res)=>{
+      console.log(res);
+    }).catch((error)=>{
+      if (error.code === "auth/account-exists-with-different-credential"){
+        alert(error.message)
+      }
+    })
 };
 
 const logout = () => {
@@ -39,4 +46,4 @@ const logout = () => {
   localStorage.clear();
 };
 
-export { auth, signInWithGoogle, logout };
+export { auth, signInWithGoogle, logout, signInWithGithub };
