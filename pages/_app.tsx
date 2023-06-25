@@ -5,6 +5,12 @@ import { useRouter } from 'next/router';
 import { useEffect } from 'react'
 import { useAuthState } from 'react-firebase-hooks/auth'
 import CircularProgress from '@mui/material/CircularProgress';
+import { Provider } from 'react-redux';
+import store from '@/redux/store';
+import { PersistGate } from 'redux-persist/integration/react';
+import { persistStore } from 'redux-persist';
+
+let persistor = persistStore(store);
 
 export default function App({ Component, pageProps }: AppProps) {
 
@@ -21,7 +27,12 @@ export default function App({ Component, pageProps }: AppProps) {
     <>
     {loading ? 
     <CircularProgress/>
-      : <Component {...pageProps} />}
+      : <Provider store={store}>
+      <PersistGate persistor={persistor}>
+
+      <Component {...pageProps} />
+      </PersistGate>
+    </Provider>}
     </>
   )
 }

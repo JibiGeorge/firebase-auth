@@ -9,15 +9,19 @@ import bg1 from '/public/images/background/bg1.jpg'
 import { useAuthState } from 'react-firebase-hooks/auth';
 import { auth, signInWithGoogle } from '@/firebase';
 import { useRouter } from 'next/router';
+import { useDispatch } from 'react-redux';
+import { setLoggedUserData } from '@/redux/slice/userSlice';
 
 const index = () => {
   const [user, loading, error] = useAuthState(auth);
   const router = useRouter();
+  const dispatch = useDispatch();
 
   useEffect(()=>{
     if(!user){
       router.push('/login')
     }else{
+      dispatch(setLoggedUserData(user));
       router.push('/')
     }
   },[router, user])
