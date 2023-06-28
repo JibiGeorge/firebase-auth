@@ -3,7 +3,9 @@ import {
   AuthProvider,
   GithubAuthProvider,
   GoogleAuthProvider,
+  RecaptchaVerifier,
   getAuth,
+  signInWithPhoneNumber,
   signInWithPopup,
   signOut,
 } from "firebase/auth";
@@ -32,13 +34,25 @@ const signInWithGithub = async () => {
 };
 
 const signInWithFireBase = async (authProvider: AuthProvider) => {
-    await signInWithPopup(auth, authProvider).then((res)=>{
+  await signInWithPopup(auth, authProvider)
+    .then((res) => {
       console.log(res);
-    }).catch((error)=>{
-      if (error.code === "auth/account-exists-with-different-credential"){
-        alert(error.message)
-      }
     })
+    .catch((error) => {
+      if (error.code === "auth/account-exists-with-different-credential") {
+        alert(error.message);
+      }
+    });
+};
+
+const sendOTP = async (phoneNumber: any) => {
+  const recaptchaVerifier = await new RecaptchaVerifier("recaptcha", {}, auth);
+  const confirmation = await signInWithPhoneNumber(
+    auth,
+    "+" + phoneNumber,
+    recaptchaVerifier
+  );
+  return confirmation;
 };
 
 const logout = () => {
@@ -46,4 +60,4 @@ const logout = () => {
   localStorage.clear();
 };
 
-export { auth, signInWithGoogle, logout, signInWithGithub };
+export { auth, signInWithGoogle, logout, signInWithGithub, sendOTP };
