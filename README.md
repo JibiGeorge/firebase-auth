@@ -1,38 +1,65 @@
-This is a [Next.js](https://nextjs.org/) project bootstrapped with [`create-next-app`](https://github.com/vercel/next.js/tree/canary/packages/create-next-app).
+# Firebase Authentication for Sign-In with Google, GitHub, and Mobile Number
+This repository contains a project that demonstrates how to implement Firebase Authentication for sign-in using various methods such as Google, GitHub, and mobile number. The project leverages the power of Firebase Authentication to provide a seamless and secure sign-in experience for users.
 
-## Getting Started
+## Features
+- Sign-in with Google: Users can sign in to the application using their Google accounts, allowing for easy access and authentication.
+- Sign-in with GitHub: Users can also choose to sign in using their GitHub accounts, providing an alternative sign-in method.
+- Sign-in with Mobile Number: The project also supports sign-in with mobile number, allowing users to authenticate using their phone numbers and verification codes.
 
-First, run the development server:
+## Technologies Used
+- Firebase Authentication: Firebase Authentication is a powerful service that provides easy-to-use SDKs and ready-to-use UI libraries to authenticate users in your application.
 
+## Packages Used
 ```bash
-npm run dev
-# or
-yarn dev
-# or
-pnpm dev
+    "dependencies": {
+        "@emotion/react": "^11.11.1",
+        "@emotion/styled": "^11.11.0",
+        "@mui/icons-material": "^5.11.16",
+        "@mui/material": "^5.13.6",
+        "@reduxjs/toolkit": "^1.9.5",
+        "@types/node": "20.3.1",
+        "@types/react": "18.2.14",
+        "@types/react-dom": "18.2.6",
+        "autoprefixer": "10.4.14",
+        "dotenv": "^16.3.1",
+        "eslint": "8.43.0",
+        "eslint-config-next": "13.4.7",
+        "firebase": "^9.23.0",
+        "next": "13.4.7",
+        "postcss": "8.4.24",
+        "react": "18.2.0",
+        "react-dom": "18.2.0",
+        "react-firebase-hooks": "^5.1.1",
+        "react-icons": "^4.10.1",
+        "react-otp-input": "^3.0.2",
+        "react-phone-input-2": "^2.15.1",
+        "react-redux": "^8.1.1",
+        "redux-persist": "^6.0.0",
+        "tailwindcss": "3.3.2",
+        "typescript": "5.1.3"
+    }
 ```
+## Setup Instructions
+```bash
+1. Clone the repository: `git clone https://github.com/JibiGeorge/firebase-auth.git`
+2. Navigate to the project directory: `cd firebase-auth`
+3. Install the project dependencies: `npm install`
+4. Create a file with name .env.local for firebase configuration key. Add below details and replace the values with your firebase auth keys.
+    API_KEY=your-api-key
+    AUTH_DOMAIN=your-auth-domain
+    PROJECT_ID=your-project-id
+    STORAGE_BUCKET=your-storage-bucket
+    MESSAGING_SENDER_ID=your-messaging-sender-id
+    APP_ID=your-app-id
+    MEASUREMENT_ID=your-measurement-id
+5. Run the application locally: `npm start`
+6. Access the application in your browser at http://localhost:3000.
+```
+## Contact
+For any inquiries or questions, feel free to reach out to us at jibiyyan@gmail.com.
 
-Open [http://localhost:3000](http://localhost:3000) with your browser to see the result.
+Connect with us on [LinkedIn](https://www.linkedin.com/in/jibi-george-496243b2/)
 
-You can start editing the page by modifying `pages/index.tsx`. The page auto-updates as you edit the file.
-
-[API routes](https://nextjs.org/docs/api-routes/introduction) can be accessed on [http://localhost:3000/api/hello](http://localhost:3000/api/hello). This endpoint can be edited in `pages/api/hello.ts`.
-
-The `pages/api` directory is mapped to `/api/*`. Files in this directory are treated as [API routes](https://nextjs.org/docs/api-routes/introduction) instead of React pages.
-
-This project uses [`next/font`](https://nextjs.org/docs/basic-features/font-optimization) to automatically optimize and load Inter, a custom Google Font.
-
-## Learn More
-
-To learn more about Next.js, take a look at the following resources:
-
-- [Next.js Documentation](https://nextjs.org/docs) - learn about Next.js features and API.
-- [Learn Next.js](https://nextjs.org/learn) - an interactive Next.js tutorial.
-
-You can check out [the Next.js GitHub repository](https://github.com/vercel/next.js/) - your feedback and contributions are welcome!
-
-## Deploy on Vercel
-
-The easiest way to deploy your Next.js app is to use the [Vercel Platform](https://vercel.com/new?utm_medium=default-template&filter=next.js&utm_source=create-next-app&utm_campaign=create-next-app-readme) from the creators of Next.js.
-
-Check out our [Next.js deployment documentation](https://nextjs.org/docs/deployment) for more details.
+<p align="center">
+  Made with ❤️ by Jibi George
+</p>
