@@ -12,11 +12,9 @@ import { useRouter } from 'next/router';
 import { useDispatch } from 'react-redux';
 import { setLoggedUserData } from '@/redux/slice/userSlice';
 import OtpInput from 'react-otp-input'
-import { red } from '@mui/material/colors';
 import { CgSpinner } from 'react-icons/cg'
 import PhoneInput from 'react-phone-input-2';
 import 'react-phone-input-2/lib/style.css'
-import { RecaptchaVerifier, signInWithPhoneNumber } from 'firebase/auth';
 
 const otpContainer = {
   display: 'flex',
@@ -130,8 +128,6 @@ const index = () => {
               <Button title="Continue With Github" txtColor="#FFF" bg="#000" Icon={GitHubIcon} handleOnClick={signInWithGithub} />
               <Button title="Continue With Phone" txtColor="#FFF" bg="#0a6cc8" Icon={PhoneIcon} handleOnClick={() => setMobileSignIn(true)} />
             </div>
-            <hr className="h-[2px] bg-[#777676b8]" />
-            <Button title="Continue With Email" txtColor="#FFF" bg="#8b8b8b" Icon={GoogleIcon} />
           </>
           : <ContinueWithPhone />}
       </div>
