@@ -40,7 +40,7 @@ const ContinueWithPhone = () => {
   const [otpVerify, setOtpVerify] = useState<boolean>(false);
   const [confirmationResponse, setConfirmationResponse] = useState<any>(null)
 
-
+  // OTP Sending
   const handleOTPSend = async () => {
     setLoading(true)
     try {
@@ -54,6 +54,7 @@ const ContinueWithPhone = () => {
     setLoading(false)
   }
 
+  // Verifying the OTP
   const verifyOTP = async () => {
     setLoading(true)
     try {

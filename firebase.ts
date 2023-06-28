@@ -25,10 +25,12 @@ const auth = getAuth(app);
 const googleProvider = new GoogleAuthProvider();
 const githubProvider = new GithubAuthProvider();
 
+// Handling Google Auth
 const signInWithGoogle = async () => {
   await signInWithFireBase(googleProvider);
 };
 
+// Handling Github Auth
 const signInWithGithub = async () => {
   await signInWithFireBase(githubProvider);
 };
@@ -45,6 +47,7 @@ const signInWithFireBase = async (authProvider: AuthProvider) => {
     });
 };
 
+// Handling user recaptcha and OTP sending
 const sendOTP = async (phoneNumber: any) => {
   const recaptchaVerifier = await new RecaptchaVerifier("recaptcha", {}, auth);
   const confirmation = await signInWithPhoneNumber(
@@ -55,6 +58,7 @@ const sendOTP = async (phoneNumber: any) => {
   return confirmation;
 };
 
+// Session clossing or logout
 const logout = () => {
   signOut(auth);
   localStorage.clear();

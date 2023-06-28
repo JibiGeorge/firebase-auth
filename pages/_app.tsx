@@ -25,14 +25,15 @@ export default function App({ Component, pageProps }: AppProps) {
 
   return (
     <>
-    {loading ? 
-    <CircularProgress/>
-      : <Provider store={store}>
-      <PersistGate persistor={persistor}>
-
-      <Component {...pageProps} />
-      </PersistGate>
-    </Provider>}
+      {loading ?
+        <div className='w-full h-screen flex flex-col justify-center items-center'>
+          <CircularProgress />
+        </div>
+        : <Provider store={store}>
+          <PersistGate persistor={persistor}>
+            <Component {...pageProps} />
+          </PersistGate>
+        </Provider>}
     </>
   )
 }
